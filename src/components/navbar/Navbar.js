@@ -1,9 +1,10 @@
 import React from 'react'
+import NavbarLinks from './NavbarItems'
 import styled from '@emotion/styled'
 
 const NavbarComponent = styled.nav`
-    background: var(--color-two);
-    padding:1rem;
+    background:var(--color-black);
+    padding:.5rem 1rem;
 
     div.container{
         max-width:1920px;
@@ -31,16 +32,16 @@ const NavbarComponent = styled.nav`
             }
         }
     }
+
+    @media(min-width: 769px){
+        padding:.5rem 3rem;
+    }
 `
 
 const linkss = [
     {
         name: 'Home',
         url: '/'
-    },
-    {
-        name: 'About',
-        url: '/about'
     },
     {
         name: 'Products',
@@ -56,24 +57,16 @@ const linkss = [
     }
 ]
 
-
-
 const Navbar = () => {
 
     return (
         <NavbarComponent>
             <div className="container">
-            <div className="brand-logo">
-                    <img src="logo.png" alt="logo"/>
+                <div className="brand-logo">
+                    <img src="logo.svg" alt="logo"/>
                 </div>
 
-                <div className="navbar-items">
-                    <ul>
-                        {linkss.map( link => {
-                            return <li key={link.url}> <a  href={link.url}> {link.name} </a> </li>
-                        })}
-                    </ul>
-                </div>
+                <NavbarLinks linkss={linkss} />
             </div>
         </NavbarComponent>
     )
